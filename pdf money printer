@@ -1,0 +1,24 @@
+<!-- report-template.html - Your golden goose -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Audit: {{site_name}} Is F*cked (But Fixable)</title>
+  <style>
+    .critical { color: #ff4757; font-weight: bold; }
+    .money-lost { background: #ff6b81; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Your Website Is Hemorrhaging Money 💸</h1>
+  
+  <div class="money-lost">
+    <h2>Estimated Monthly Loss: ${{monthly_loss}}</h2>
+    <p>Based on your {{slow_pages}} slow-loading pages</p>
+  </div>
+  
+  <h2>Critical Issues (Fix These First, Dumbass)</h2>
+  {{#critical_issues}}
+    <div class="critical">{{issue}} - Costs you ${{cost_per_month}}/month</div>
+  {{/critical_issues}}
+</body>
+</html>
