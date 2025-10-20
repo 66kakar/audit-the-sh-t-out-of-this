@@ -1,0 +1,25 @@
+# audit.sh - Your money-making script
+site_url=$1
+echo "Auditing $site_url because someone's paying us to..."
+
+# Performance metrics that actually matter
+node run-lighthouse.js $site_url
+node css-bloat-detector.js $site_url  
+node js-garbage-collector.js $site_url
+node seo-disaster-finder.js $site_url
+// Your main audit engine (audit-engine.js)
+const puppeteer = require('puppeteer');
+const lighthouse = require('lighthouse');
+
+async function auditWebsite(url) {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  
+  // Collect the sh*t that matters
+  const metrics = await page.metrics();
+  const coverage = await page.coverage.startJSCoverage();
+  
+  // Generate report that makes clients go "holy sh*t"
+  return generatePrettyReport(metrics, coverage);
+}
+
